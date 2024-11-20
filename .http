@@ -1,0 +1,44 @@
+@host = http://localhost:3000
+
+### Register new user
+POST {{host}}/auth/register
+Content-Type: application/json
+
+{
+  "username": "Anakin Skywalker",
+  "password": "starwars"
+}
+
+### Login
+# @name login
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "Anakin Skywalker",
+  "password": "starwars"
+}
+
+### Get playlists as logged in user
+@token = {{login.response.body.token}}
+GET {{host}}/playlists
+Authorization: Bearer {{token}}
+
+### Create playlist as logged in user
+POST {{host}}/playlists
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "ownerId": 3
+}
+
+### Get all users
+GET {{host}}/users
+
+### Get specific user
+GET {{host}}/users/3
+
+### Get specific user logged in
+GET {{host}}/users/3
+Authorization: Bearer {{token}}
