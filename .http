@@ -54,3 +54,13 @@ GET {{host}}/users/1
 ### Get specific user logged in
 GET {{host}}/users/1
 Authorization: Bearer {{token}}
+
+### Get tracks
+GET {{host}}/tracks
+
+### Get specific track
+GET {{host}}/tracks/3
+
+### Get user owned playlists
+GET {{host}}/tracks/3
+Authorization: Bearer {{token}}
