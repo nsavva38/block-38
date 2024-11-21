@@ -24,6 +24,15 @@ Content-Type: application/json
 GET {{host}}/playlists
 Authorization: Bearer {{token}}
 
+### Get specific user's playlist
+GET {{host}}/playlists/1
+Authorization: Bearer {{token}}
+
+### Should not get access to unowned playlist
+GET {{host}}/playlists/10
+Authorization: Bearer {{token}}
+
+
 ### Create playlist as logged in user
 POST {{host}}/playlists
 Content-Type: application/json

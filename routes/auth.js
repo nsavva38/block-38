@@ -57,8 +57,8 @@ router.post("/login", async (req, res, next) => {
 
 function authenticate(req, res, next) {
   console.log(`req.user:`, req.user);
-  console.log(`req.headers:`, !req.headers.authorization.endsWith("{{login.response.body.token}}"))
-  if (!req.headers.authorization.endsWith("{{login.response.body.token}}")) {
+
+  if (req.user) {
     next();
   } else {
     next({ 

@@ -20,6 +20,21 @@ router.get("/", authenticate, async (req, res, next) => {
   }
 });
 
+router.get("/:id",authenticate, async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    const playlist = await prisma.playlist.findUnique({ where: { id: +id}});
+    if (playlist) {
+      res.json(playlist);
+    } else {
+      next({ status: 403, message: `You do not own this playlist`});
+    }
+  } catch (e) {
+    next(e);
+  }
+});
+
 
 router.post("/", authenticate, async ( req, res, next) => {
   
