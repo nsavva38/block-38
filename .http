@@ -57,10 +57,16 @@ Authorization: Bearer {{token}}
 
 ### Get tracks
 GET {{host}}/tracks
+Authorization: Bearer {{token}}
+
 
 ### Get specific track
 GET {{host}}/tracks/3
 
 ### Get user owned playlists
-GET {{host}}/tracks/3
+GET {{host}}/tracks/all/5
+Authorization: Bearer {{token}}
+
+### Get user tracks by playlists
+GET {{host}}/tracks/all/tracks
 Authorization: Bearer {{token}}
