@@ -1,7 +1,7 @@
 @host = http://localhost:3000
 
 ### Register new user
-POST {{host}}/auth/register
+POST {{host}}/register
 Content-Type: application/json
 
 {
@@ -11,7 +11,7 @@ Content-Type: application/json
 
 ### Login
 # @name login
-POST {{host}}/auth/login
+POST {{host}}/login
 Content-Type: application/json
 
 {
@@ -30,15 +30,18 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "ownerId": 3
+  "name": "Obi-Wan Playlist",
+  "description": "A long time ago",
+  "ownerId": 1,
+  "trackNames": ["song1", "song2", "song3"] 
 }
 
 ### Get all users
 GET {{host}}/users
 
 ### Get specific user
-GET {{host}}/users/3
+GET {{host}}/users/1
 
 ### Get specific user logged in
-GET {{host}}/users/3
+GET {{host}}/users/1
 Authorization: Bearer {{token}}

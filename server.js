@@ -6,7 +6,7 @@ require("dotenv").config();
 app.use(require("morgan")("dev"));
 app.use(express.json());
 
-app.use("/auth", require("./routes/auth").router);
+app.use(require("./routes/auth").router);
 app.use("/users", require("./routes/users"));
 app.use("/playlists", require("./routes/playlists"));
 app.use("/tracks", require("./routes/tracks"));

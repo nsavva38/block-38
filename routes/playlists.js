@@ -7,10 +7,12 @@ const prisma = require("../prisma");
 const { authenticate } = require("./auth");
 
 router.get("/", authenticate, async (req, res, next) => {
+  console.log(`req.body in playlists.js:`, req.body);
+  console.log(`req.user:`, req.user);
   try {
     const playlists = await prisma.playlist.findMany({
       where: { ownerId: req.user.id},
-      include: { playlist: true},
+      include: { tracks: true},
     });
     res.json(playlists);
   } catch (e) {
@@ -20,6 +22,7 @@ router.get("/", authenticate, async (req, res, next) => {
 
 
 router.post("/", authenticate, async ( req, res, next) => {
+  
   try {
     const { name, description, ownerId, trackNames } = req.body;
 
